@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>빗썸 시장가 매수 매도 프로그램</title>
+  </head>
+  <body>
+    <h1>시장가 매수 매도 프로그램</h1>
+
+    <h2>제작 : 크립토 잡화상점</h2>
+    <h3>
+      블로그, 문의 : <a href="https://blog.naver.com/suco-eth" target="_blank">https://blog.naver.com/suco-eth</a>
+    </h3>
+
+    <div style="display: flex; gap: 4px; flex-direction: column">
+      <p style="font-size: large; font-weight: bold; color: red">API 키 받을 때 꼭 IP 제한 하세요!!</p>
+      <div style="display: flex; justify-content: space-between">
+        <label for="api-key">API Connect Key</label>
+        <input id="api-key" type="text" />
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <label for="api-secret">API Secret Key</label>
+        <input id="api-secret" type="password" />
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <label for="krw-amount">주문 금액</label>
+        <input id="krw-amount" type="text" />
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <label for="krw-target-volume">목표 거래량</label>
+        <input id="krw-target-volume" type="text" />
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <label for="order-currency">주문 마켓</label>
+        <input id="order-currency" type="text" />
+      </div>
+    </div>
+    <div style="height: 10px"></div>
+    <div style="height: 40px">
+      <button style="height: 20px" id="start-btn">주문 시작</button>
+    </div>
+
+    <div style="height: 1px; border: 1px solid black"></div>
+
+    <table style="border-collapse: collapse; width: 100%; text-align: center; font-size: 12px">
+      거래량 추정
+      <thead>
+        <tr>
+          <th style="border: 1px solid black">총 거래량 (원)</th>
+          <th style="border: 1px solid black">총 거래량 (코인)</th>
+          <!-- <th style="border: 1px solid black">반복 횟수</th> -->
+        </tr>
+      </thead>
+      <tbody id="order-history">
+        <tr>
+          <td id="total-krw-volume" style="border: 1px solid black">0</td>
+          <td id="total-btc-volume" style="border: 1px solid black">0</td>
+          <!-- <td id="total-loop-count" style="border: 1px solid black">0</td> -->
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="error" style="font-size: large; font-weight: bold; color: red"></div>
+  </body>
+  <script src="renderer.js"></script>
+  <script>
+    document.querySelector("#krw-amount").value = 100000;
+    document.querySelector("#krw-target-volume").value = 100000 * 10000;
+    document.querySelector("#order-currency").value = "BTC";
+
+    document.getElementById("start-btn").addEventListener("click", start);
+  </script>
+</html>
